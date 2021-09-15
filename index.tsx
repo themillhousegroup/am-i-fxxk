@@ -38,6 +38,10 @@ const partitionData = (data: Array<SiteData>): PartitionedSiteData => {
     tierTwo: dedupeByTitle(tTwo)
   };
 };
+const VIC_POSTCODE = /^3\d\d\d$/
+const isValidPostcode = (s: string):boolean => {
+  return VIC_POSTCODE.test(s);
+}
 
 const App = () => {
   const [postcode, setPostcode] = useState('');
@@ -46,10 +50,7 @@ const App = () => {
   const postcodeChanged = (changeEvent: ChangeEvent<HTMLInputElement>) => {
     setData(undefined);
     const newValue = changeEvent.target.value;
-    const rightLength = newValue.length === 4;
-    const vicPostcode = newValue.startsWith('3');
-    const isValid = rightLength && vicPostcode;
-    if (isValid) {
+    if (isValidPostcode(newValue)) {
       setPostcode(newValue);
     }
   };

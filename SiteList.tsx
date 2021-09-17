@@ -1,10 +1,10 @@
 import React from 'react';
-import { SiteData } from '.';
+import { SiteData } from './typings';
 
 const SiteList = ({ sites }: { sites: Array<SiteData> }) => {
   return (
     <div>
-      {sites.map(site => (
+      {sites.map((site) => (
         <h5 className="siteListRow" key={site.Site_title}>
           {site.Site_title} | {site.Site_streetaddress}
         </h5>
